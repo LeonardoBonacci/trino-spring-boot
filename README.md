@@ -1,0 +1,1 @@
+# trino-spring-boot-starter
