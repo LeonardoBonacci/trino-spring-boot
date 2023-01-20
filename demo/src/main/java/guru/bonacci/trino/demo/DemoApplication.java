@@ -30,7 +30,7 @@ public class DemoApplication implements CommandLineRunner {
 		log.info("start 123");
 		
 		// properties
-		String url = "jdbc:trino://localhost:8080/mysql/heroes";
+		String url = "jdbc:trino://localhost:8080";
 		Properties properties = new Properties();
 		properties.setProperty("user", "test");
 
@@ -45,7 +45,7 @@ public class DemoApplication implements CommandLineRunner {
 	  	e.printStackTrace();
 	  }
 
-		url = "jdbc:trino://localhost:8080/mysql/heroes?user=test";
+		url = "jdbc:trino://localhost:8080?user=test";
 
 		try (Connection connection = DriverManager.getConnection(url)) {
 			Statement s = connection.createStatement();
@@ -60,6 +60,7 @@ public class DemoApplication implements CommandLineRunner {
 		
 		log.info("count " + repo.count());
 		log.info(repo.findById(1l).get().toString());
+		log.info(repo.findByName("bar").get().toString());
 
 	}
 
