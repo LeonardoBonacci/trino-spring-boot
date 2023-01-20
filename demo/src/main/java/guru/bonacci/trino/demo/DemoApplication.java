@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Properties;
 
 import org.springframework.boot.CommandLineRunner;
@@ -20,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DemoApplication implements CommandLineRunner {
 
 	private final UserRepository repo;
+	private final BlaRepository bla;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -59,8 +61,13 @@ public class DemoApplication implements CommandLineRunner {
 	  }
 		
 		log.info("count " + repo.count());
+		log.info("count " + repo.countt());
 		log.info(repo.findById(1l).get().toString());
 		log.info(repo.findByName("bar").get().toString());
+
+		bla.all().forEach(ub -> log.info(ub.getBlaName() + "<>" + ub.getPoolId()));
+		
+		System.out.println(bla.balance() + "");
 
 	}
 
